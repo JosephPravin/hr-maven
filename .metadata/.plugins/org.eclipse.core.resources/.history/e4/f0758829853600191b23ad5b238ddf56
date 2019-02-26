@@ -1,0 +1,13 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Employee e = new Employee();
+		
+		
+		System.out.println("I am the Main class" + e.getEmpFn());
+
+	}
+
+}
