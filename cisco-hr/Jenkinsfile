@@ -9,5 +9,17 @@ pipeline {
 				}
 			}
 		}
+		
+		stage('Test stage') {
+			steps {
+				echo "Running test scripts"
+			}
+		}
+		
+		stage('Deploy stage') {
+			steps {
+				echo "Deploying..."
+			}
+		}
 	}
 }
