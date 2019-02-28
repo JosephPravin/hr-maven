@@ -3,14 +3,4 @@
   <groupId>com.cisco.hr</groupId>
   <artifactId>cisco-hr</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  
-  <dependencies>
-  	<dependency>
-  		<groupId>junit</groupId>
-  		<artifactId>junit</artifactId>
-      <packaging>war</packaging>
-  		<version>4.9</version>
-  		<scope>test</scope>
-  	</dependency>
-  </dependencies>
 </project>
