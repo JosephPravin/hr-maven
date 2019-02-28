@@ -16,9 +16,11 @@ pipeline {
 			}
 		}
 		
-		stage('Deploy stage') {
+		stage('Deploy to tomcat') {
 			steps {
-				echo "Deploying..."
+				sshagent(['tomcat-deploy']) {
+    					sh 'scp -o StrictHostKeyChecking=no target/*.war tomcat@172.17.0.4:/opt/tomcat8/webapps'
+				} 
 			}
 		}
 	}
