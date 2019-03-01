@@ -19,7 +19,7 @@ pipeline {
 		stage('Deploy to tomcat') {
 			steps {
 				sshagent(['tomcat-host-admin']) {
-    					sh 'scp -o StrictHostKeyChecking=no target/*.jar 10.98.12.68:/Users/jpravinp/Desktop/tomcat/webapps'
+    					sh 'scp -o StrictHostKeyChecking=no target/*.jar admin@127.0.0.1:/Users/jpravinp/Desktop/tomcat/webapps'
 				} 
 			}
 		}
