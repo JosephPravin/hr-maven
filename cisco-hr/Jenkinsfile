@@ -5,10 +5,10 @@ pipeline {
 		
 		stage('Deploy to tomcat') {
 			steps{
-				
-			sshagent(['jpravinp']) {
 				sh 'scp -o StrictHostKeyChecking=no target/*.jar jpravinp@10.98.12.68:/Users/jpravinp/Desktop/tomcat/webapps'
-			}
+			/*sshagent(['jpravinp']) {
+				sh 'scp -o StrictHostKeyChecking=no target/*.jar jpravinp@10.98.12.68:/Users/jpravinp/Desktop/tomcat/webapps'
+			}*/
 			}
 			
 		}
