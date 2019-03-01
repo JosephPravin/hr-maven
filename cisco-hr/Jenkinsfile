@@ -19,7 +19,7 @@ pipeline {
 		stage('Deploy to tomcat') {
 			steps {
 				
-    				bash 'scp -o StrictHostKeyChecking=no -vvv target/*.jar jpravinp@10.98.12.68:/Users/jpravinp/Desktop/tomcat/webapps'
+    				sh 'scp -o StrictHostKeyChecking=no -vvv target/*.jar jpravinp@10.98.12.68:/Users/jpravinp/Desktop/tomcat/webapps'
 	
 			}
 		}
