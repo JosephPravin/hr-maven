@@ -17,11 +17,16 @@ pipeline {
 		}
 		
 		stage('Deploy to tomcat') {
+			
+			sshagent(['jpravinp']) {
+				pwd;hostname
+			}
+			/*
 			steps {
 				
     				sh 'scp -o StrictHostKeyChecking=no -vvv target/*.jar jpravinp@10.98.12.68:/Users/jpravinp/Desktop/tomcat/webapps'
 	
-			}
+			}*/
 		}
 	}
 }
