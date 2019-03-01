@@ -5,7 +5,7 @@ pipeline {
 		stage('Compile stage') {
 			steps {
 				withMaven(maven: 'maven_3_6_0') {
-					sh 'mvn -f cisco-hr/pom.xml clean'
+					sh 'mvn -f cisco-hr/pom.xml clean package'
 				}
 			}
 		}
@@ -18,7 +18,7 @@ pipeline {
 		
 		stage('Deploy to tomcat') {
 			steps {
-				sshagent(['host-id']) {
+				sshagent(['tomcat-host-admin']) {
     					sh 'scp -o StrictHostKeyChecking=no target/*.jar admin@10.98.12.68:/webapps'
 				} 
 			}
