@@ -4,9 +4,11 @@ pipeline {
 	stages{
 		
 		stage('Deploy to tomcat') {
-			
+			steps{
+				
 			sshagent(['jpravinp']) {
 				pwd;hostname
+			}
 			}
 			
 		}
