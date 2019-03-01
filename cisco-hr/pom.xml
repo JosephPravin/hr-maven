@@ -3,4 +3,5 @@
   <groupId>com.cisco.hr</groupId>
   <artifactId>cisco-hr</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
 </project>
