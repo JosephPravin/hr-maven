@@ -7,7 +7,7 @@ pipeline {
 			steps{
 				
 			sshagent(['jpravinp']) {
-				sh hostname
+				sh 'hostname'
 			}
 			}
 			
