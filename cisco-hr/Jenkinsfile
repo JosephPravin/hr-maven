@@ -16,20 +16,12 @@ pipeline {
 			}
 		}
 		
-		
 		stage('Deploy to tomcat') {
 			steps {
-				withCredentials([usernameColonPassword(credentialsId: '5f07bac8-91fc-48cf-b73a-92775c5df25b', variable: 'tomcat-cred')]) {
-    					sh 'scp -o StrictHostKeyChecking=no target/*.jar admin@10.98.12.68:/Users/jpravinp/Desktop/tomcat/webapps'
+				sshagent(['tomcat-host-admin']) {
+    					sh 'scp -o StrictHostKeyChecking=no -vvv target/*.jar admin@10.98.12.68:/Users/jpravinp/Desktop/tomcat/webapps'
 				} 
 			}
 		}
-		/*stage('Deploy to tomcat') {
-			steps {
-				sshagent(['tomcat-host-admin']) {
-    					sh 'scp -o StrictHostKeyChecking=no target/*.jar admin@10.98.12.68:/Users/jpravinp/Desktop/tomcat/webapps'
-				} 
-			}
-		}*/
 	}
 }
