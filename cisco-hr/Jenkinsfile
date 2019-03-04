@@ -5,9 +5,9 @@ pipeline {
 		
 		stage('Deploy to tomcat') {
 			steps{
-				sh  'ssh jpravinp@10.98.12.68 /Users/jpravinp/Desktop/tomcat/bin/shutdown.sh'
-				sh 'scp -o StrictHostKeyChecking=no cisco-hr/target/*.jar jpravinp@10.98.12.68:/Users/jpravinp/Desktop/tomcat/webapps'
-				sh  'ssh jpravinp@10.98.12.68 /Users/jpravinp/Desktop/tomcat/bin/startup.sh'
+				sh  'ssh jpravinp@10.98.12.238 /Users/jpravinp/Desktop/tomcat/bin/shutdown.sh'
+				sh 'scp -o StrictHostKeyChecking=no cisco-hr/target/*.jar jpravinp@10.98.12.238:/Users/jpravinp/Desktop/tomcat/webapps'
+				sh  'ssh jpravinp@10.98.12.238 /Users/jpravinp/Desktop/tomcat/bin/startup.sh'
 				/*sshagent(['jpravinp']) {
 				sh 'scp -o StrictHostKeyChecking=no cisco-hr/target/*.jar jpravinp@10.98.12.68:/Users/jpravinp/Desktop/tomcat/webapps'
 			}*/
