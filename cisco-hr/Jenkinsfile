@@ -8,9 +8,15 @@ node {
       		sh "${mvnHome}/bin/mvn -f cisco-hr/pom.xml package"
 	}
 	
-	stage('Deploy to Tomcat'){
-		sshagent(credentials: ['jpravinp'], ignoreMissing: true) {
-		 sh 'date'
-		}
+	stage('Stop Tomcat'){
+		sh  'ssh jpravinp@10.98.12.238 /Users/jpravinp/Desktop/tomcat/bin/shutdown.sh'
    	}
+	
+	stage('Copy jar to webapps') {
+		sh 'scp -o StrictHostKeyChecking=no cisco-hr/target/*.jar jpravinp@10.98.12.238:/Users/jpravinp/Desktop/tomcat/webapps'
+	}
+	
+	stage('Start tomcat') {
+		sh  'ssh jpravinp@10.98.12.238 /Users/jpravinp/Desktop/tomcat/bin/startup.sh'
+	}
 }
