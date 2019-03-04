@@ -20,7 +20,11 @@ pipeline {
 		}
 		stage('Start tomcat') {
 			steps {
-				sh  'ssh -o StrictHostKeyChecking=no jpravinp@10.98.12.238 /Users/jpravinp/Desktop/tomcat/bin/startup.sh'
+				sshagent(['jpravinp']) {
+					sh 'ssh -o StrictHostKeyChecking=no jpravinp@10.98.12.238'
+					sh 'pwd'
+				}
+				//sh  'ssh -o StrictHostKeyChecking=no jpravinp@10.98.12.238 /Users/jpravinp/Desktop/tomcat/bin/startup.sh'
 			}
 		}
 	}
