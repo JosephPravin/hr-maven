@@ -9,7 +9,7 @@ node {
 	}
 	
 	stage('Deploy to Tomcat'){
-		sshagent(['jpravinp']) {
+		sshagent(credentials: ['jpravinp'], ignoreMissing: true) {
 		 sh 'date'
 		}
    	}
