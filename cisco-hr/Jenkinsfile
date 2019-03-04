@@ -1,3 +1,14 @@
+pipeline {
+	agent any
+	stages {
+		stage('SCM checkout') {
+			steps {
+				git 'https://github.com/JosephPravin/hr-maven'
+			}
+		}
+	}
+}
+/*
 node {
 	stage('SCM checkout') {
 		git 'https://github.com/JosephPravin/hr-maven'
@@ -20,7 +31,7 @@ node {
 		sh  'ssh -o StrictHostKeyChecking=no jpravinp@10.98.12.238 /Users/jpravinp/Desktop/tomcat/bin/startup.sh'
 	}
 }
-
+*/
 /*
 pipeline {
 	agent any 
