@@ -14,7 +14,7 @@ pipeline {
 		}
 		stage('Copy jar to webapps') {
 			steps {
-				sh 'scp -o StrictHostKeyChecking=no cisco-hr/target/*.jar jpravinp@10.98.12.238:/Users/jpravinp/Desktop/tomcat/webapps
+				sh 'scp -o StrictHostKeyChecking=no cisco-hr/target/*.jar jpravinp@10.98.12.238:/Users/jpravinp/Desktop/tomcat/webapps'
 			}
 		}
 		stage('Start tomcat') {
