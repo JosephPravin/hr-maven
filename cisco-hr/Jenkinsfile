@@ -16,13 +16,12 @@ pipeline {
 			}
 		}
 		
-        stage('Print working directory') {
+		stage('SSH into agent') {
 			steps{
 				sshagent(['jpravinp']) {
-				    
+
 				}
 			}
-			
 		}
 	}
 }
