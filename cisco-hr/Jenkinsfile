@@ -3,8 +3,9 @@ pipeline {
 	stages {
 		stage('Compile-Package') {
 			steps{
-				def mvnHome =  tool name: 'maven_3_6_0', type: 'maven'   
-      				sh "${mvnHome}/bin/mvn -f cisco-hr/pom.xml package"
+				withMaven(maven: 'maven_3_6_0') {
+					sh 'mvn -f cisco-hr/pom.xml clean package'
+				}
 			}
 		}
 		stage('Stop Tomcat') {
