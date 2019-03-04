@@ -1,35 +1,6 @@
 pipeline {
 	agent any 
 	
-	node{
-		stage('Compile stage') {
-			steps {
-				withMaven(maven: 'maven_3_6_0') {
-					sh 'mvn -f cisco-hr/pom.xml clean package'
-				}
-			}
-		}
-		
-		stage('Test stage') {
-			steps {
-				echo "Running test scripts"
-			}
-		}
-		
-        	stage('Print working directory') {
-			
-
-                sshagent(['jpravinp']) {
-                    sh 'pwd;'
-                }
-		
-		}
-	}
-}
-
-/*pipeline {
-	agent any 
-	
 	stages{
 		stage('Compile stage') {
 			steps {
@@ -47,12 +18,11 @@ pipeline {
 		
         stage('Print working directory') {
 			steps{
-
-                sshagent(['jpravinp']) {
-                    sh 'pwd;'
-                }
+				sshagent(['jpravinp']) {
+				    
+				}
 			}
 			
 		}
 	}
-}*/
+}
