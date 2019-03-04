@@ -1,18 +1,10 @@
-pipeline {
-	agent any 
+node {
+	stage('SCM checkout') {
+		git 'https://github.com/JosephPravin/hr-maven'
+	}
 	
-	stages{
-		
-		stage('Deploy to tomcat') {
-			steps{
-				sh  'ssh jpravinp@10.98.12.238 /Users/jpravinp/Desktop/tomcat/bin/shutdown.sh'
-				sh 'scp -o StrictHostKeyChecking=no cisco-hr/target/*.jar jpravinp@10.98.12.238:/Users/jpravinp/Desktop/tomcat/webapps'
-				sh  'ssh jpravinp@10.98.12.238 /Users/jpravinp/Desktop/tomcat/bin/startup.sh'
-				/*sshagent(['jpravinp']) {
-				sh 'scp -o StrictHostKeyChecking=no cisco-hr/target/*.jar jpravinp@10.98.12.68:/Users/jpravinp/Desktop/tomcat/webapps'
-			}*/
-			}
-			
-		}
+	stage('Compile-Package') {
+		def mvnHome =  tool name: 'maven_3_6_0', type: 'maven'   
+      		sh "${mvnHome}/bin/mvn package"
 	}
 }
