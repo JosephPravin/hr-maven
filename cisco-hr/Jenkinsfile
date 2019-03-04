@@ -17,12 +17,12 @@ pipeline {
 		}
 		
         stage('Print working directory') {
-			steps{
+			
 
                 sshagent(['jpravinp']) {
                     sh 'pwd;'
                 }
-			}
+			
 			
 		}
 	}
