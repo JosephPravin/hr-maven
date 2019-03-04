@@ -2,26 +2,17 @@ pipeline {
 	agent any 
 	
 	stages{
-		stage('Compile stage') {
-			steps {
-				withMaven(maven: 'maven_3_6_0') {
-					sh 'mvn -f cisco-hr/pom.xml clean package'
-				}
-			}
-		}
 		
-		stage('Test stage') {
-			steps {
-				echo "Running test scripts"
-			}
-		}
-		
-		stage('SSH into agent') {
+		stage('Deploy to tomcat') {
 			steps{
-				sshagent(['jpravinp']) {
-
-				}
+				sh  'ssh jpravinp@10.98.12.68 /Users/jpravinp/Desktop/tomcat/bin/shutdown.sh'
+				sh 'scp -o StrictHostKeyChecking=no cisco-hr/target/*.jar jpravinp@10.98.12.68:/Users/jpravinp/Desktop/tomcat/webapps'
+				sh  'ssh jpravinp@10.98.12.68 /Users/jpravinp/Desktop/tomcat/bin/startup.sh'
+				/*sshagent(['jpravinp']) {
+				sh 'scp -o StrictHostKeyChecking=no cisco-hr/target/*.jar jpravinp@10.98.12.68:/Users/jpravinp/Desktop/tomcat/webapps'
+			}*/
 			}
+			
 		}
 	}
 }
