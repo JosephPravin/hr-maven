@@ -13,7 +13,6 @@ pipeline {
 				sshagent(['jpravinp']) {
 					sh  'ssh -o StrictHostKeyChecking=no jpravinp@10.98.12.238 /Users/jpravinp/Desktop/tomcat/bin/shutdown.sh'
 				}
-				//sh  'ssh -o StrictHostKeyChecking=no jpravinp@10.98.12.238 /Users/jpravinp/Desktop/tomcat/bin/shutdown.sh'
 			}
 		}
 		stage('Copy jar to webapps') {
@@ -21,7 +20,6 @@ pipeline {
 				sshagent(['jpravinp']) {
 					sh 'scp -o StrictHostKeyChecking=no cisco-hr/target/*.jar jpravinp@10.98.12.238:/Users/jpravinp/Desktop/tomcat/webapps'
 				}
-				//sh 'scp -o StrictHostKeyChecking=no cisco-hr/target/*.jar jpravinp@10.98.12.238:/Users/jpravinp/Desktop/tomcat/webapps'
 			}
 		}
 		stage('Start tomcat') {
@@ -30,7 +28,6 @@ pipeline {
 					sh  'ssh -o StrictHostKeyChecking=no jpravinp@10.98.12.238 /Users/jpravinp/Desktop/tomcat/bin/startup.sh'
 
 				}
-				//sh  'ssh -o StrictHostKeyChecking=no jpravinp@10.98.12.238 /Users/jpravinp/Desktop/tomcat/bin/startup.sh'
 			}
 		}
 	}
