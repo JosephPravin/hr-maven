@@ -1,5 +1,6 @@
 pipeline {
 	agent any
+	def ipAddress = '10.98.12.248'
 	stages {
 		stage('Compile-Package') {
 			steps{
@@ -11,21 +12,21 @@ pipeline {
 		stage('Stop Tomcat') {
 			steps {
 				sshagent(['jpravinp']) {
-					sh  'ssh -o StrictHostKeyChecking=no jpravinp@10.98.12.238 /Users/jpravinp/Desktop/tomcat/bin/shutdown.sh'
+					sh  'ssh -o StrictHostKeyChecking=no jpravinp@${ipAddress} /Users/jpravinp/Desktop/tomcat/bin/shutdown.sh'
 				}
 			}
 		}
 		stage('Copy jar to webapps') {
 			steps {
 				sshagent(['jpravinp']) {
-					sh 'scp -o StrictHostKeyChecking=no cisco-hr/target/*.jar jpravinp@10.98.12.238:/Users/jpravinp/Desktop/tomcat/webapps'
+					sh 'scp -o StrictHostKeyChecking=no cisco-hr/target/*.jar jpravinp@${ipAddress}:/Users/jpravinp/Desktop/tomcat/webapps'
 				}
 			}
 		}
 		stage('Start tomcat') {
 			steps {
 				sshagent(['jpravinp']) {
-					sh  'ssh -o StrictHostKeyChecking=no jpravinp@10.98.12.238 /Users/jpravinp/Desktop/tomcat/bin/startup.sh'
+					sh  'ssh -o StrictHostKeyChecking=no jpravinp@${ipAddress} /Users/jpravinp/Desktop/tomcat/bin/startup.sh'
 
 				}
 			}
