@@ -1,6 +1,8 @@
 pipeline {
 	agent any
-	def ipAddress = '10.98.12.248'
+	environment {
+		ipAddress = '10.98.12.248'
+	}
 	stages {
 		stage('Compile-Package') {
 			steps{
