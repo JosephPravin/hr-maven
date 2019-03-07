@@ -8,7 +8,7 @@ pipeline {
 			steps {
 				sshagent(['jpravinp']) {
 					sh 'ssh -tt -o StrictHostKeyChecking=no jpravinp@${ipAddress}'
-					sh 'pwd'
+			
 					// jar xf /Users/jpravinp/Desktop/tomcat/webapps/cisco-hr-0.0.1-SNAPSHOT.jar
 				}
 			}
