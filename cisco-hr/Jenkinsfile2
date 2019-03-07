@@ -35,7 +35,7 @@ pipeline {
 		stage('Explode jar') {
 			steps {
 				sshagent(['jpravinp']) {
-					sh  'jar jpravinp@${ipAddress}:/Users/jpravinp/Desktop/tomcat/webapps xf *.jar'
+					sh  'ssh -o StrictHostKeyChecking=no jpravinp@${ipAddress} jar xf /Users/jpravinp/Desktop/tomcat/webapps/cisco-*.jar'
 				}
 			}
 		}
