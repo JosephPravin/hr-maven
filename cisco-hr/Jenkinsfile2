@@ -35,7 +35,8 @@ pipeline {
 		stage('Explode jar') {
 			steps {
 				sshagent(['jpravinp']) {
-					sh  'jar xf /Users/jpravinp/Desktop/tomcat/webapps/cisco-hr-0.0.1-SNAPSHOT.jar'
+					sh 'pwd'
+					//sh  'jar xf /Users/jpravinp/Desktop/tomcat/webapps/cisco-hr-0.0.1-SNAPSHOT.jar'
 				}
 			}
 		}
