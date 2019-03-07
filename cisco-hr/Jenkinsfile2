@@ -35,8 +35,9 @@ pipeline {
 		stage('Explode jar') {
 			steps {
 				sshagent(['jpravinp']) {
-					sh 'pwd'
-					//sh  'jar xf /Users/jpravinp/Desktop/tomcat/webapps/cisco-hr-0.0.1-SNAPSHOT.jar'
+					//pwd + /var/jenkins_home/workspace/MyTestJob2-Pipeline
+					sh 'ssh -o StrictHostKeyChecking=no jpravinp@${ipAddress} && pwd'
+					sh  'jar xf /Users/jpravinp/Desktop/tomcat/webapps/cisco-hr-0.0.1-SNAPSHOT.jar'
 				}
 			}
 		}
