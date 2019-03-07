@@ -36,7 +36,7 @@ pipeline {
 			steps {
 				sshagent(['jpravinp']) {
 					//pwd + /var/jenkins_home/workspace/MyTestJob2-Pipeline
-					sh 'ssh -o StrictHostKeyChecking=no jpravinp@${ipAddress} | jar xf /Users/jpravinp/Desktop/tomcat/webapps/cisco-hr-0.0.1-SNAPSHOT.jar'
+					sh 'ssh -o StrictHostKeyChecking=no jpravinp@${ipAddress}; jar xf /Users/jpravinp/Desktop/tomcat/webapps/cisco-hr-0.0.1-SNAPSHOT.jar'
 					//sh  'jar xf /Users/jpravinp/Desktop/tomcat/webapps/cisco-hr-0.0.1-SNAPSHOT.jar'
 				}
 			}
