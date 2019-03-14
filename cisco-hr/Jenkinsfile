@@ -18,10 +18,12 @@ pipeline {
 				}
 			}
 			post {
-				success{}
+				success{
+				
+				}
 				failure{
 					script{
-						sh 'exit 1'	
+						sh 'echo "Exited"'	
 					}
 				}
 			}
