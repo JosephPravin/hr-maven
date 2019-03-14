@@ -12,15 +12,12 @@ pipeline {
 			}
 		}
 		stage('Stop Tomcat') {
-			try {
 			steps {
 				sshagent(['jpravinp']) {
 						sh 'ssh -o StrictHostKeyChecking=no jpravinp@${ipAddress} /Users/jpravinp/Desktop/tomcat/bin/shutdown.sh'	
 				}
 			} 
-			} finally {
-						echo '[FAILURE]Failed to stop Tomcat'
-					}
+			
 		}
 		
 		stage('Copy jar to webapps') {
