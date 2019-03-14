@@ -14,7 +14,7 @@ pipeline {
 		stage('Stop Tomcat') {
 			steps {
 				sshagent(['jpravinp']) {
-					def result = sh  'ssh -o StrictHostKeyChecking=no jpravinp@${ipAddress} /Users/jpravinp/Desktop/tomcat/bin/shutdown.sh'
+					def result = sh returnStatus: true, script: 'ssh -o StrictHostKeyChecking=no jpravinp@${ipAddress} /Users/jpravinp/Desktop/tomcat/bin/shutdown.sh'
 					if(result != 0) {
 						sh "exit ${result}" 
 					}
