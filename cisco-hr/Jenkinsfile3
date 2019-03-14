@@ -13,7 +13,7 @@ pipeline {
 		}
 		stage('Stop Tomcat') {
 			steps {
-				sshagent(['jpravinp']) {
+				sshagent() {
 						sh 'ssh -o StrictHostKeyChecking=no jpravinp@${ipAddress} /Users/jpravinp/Desktop/tomcat/bin/shutdown.sh'	
 				}
 			} 
