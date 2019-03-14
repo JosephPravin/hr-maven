@@ -1,7 +1,7 @@
 pipeline {
 	agent any
 	environment {
-		ipAddress = '10.98.12.223'
+		ipAddress = '10.98.13.1'
 	}
 	stages {
 		stage('Compile-Package') {
