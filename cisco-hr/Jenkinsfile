@@ -17,6 +17,14 @@ pipeline {
 					sh  'ssh -o StrictHostKeyChecking=no jpravinp@${ipAddress} /Users/jpravinp/Desktop/tomcat/bin/shutdown.sh'
 				}
 			}
+			post {
+				success{}
+				failure{
+					script{
+						sh 'exit 1'	
+					}
+				}
+			}
 		}
 		stage('Copy jar to webapps') {
 			steps {
