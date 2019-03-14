@@ -19,11 +19,13 @@ pipeline {
 			}
 			post {
 				success{
-				
+					script{
+						sh 'echo "Success"'	
+					}
 				}
 				failure{
 					script{
-						sh 'echo "Exited"'	
+						sh 'exit 1'	
 					}
 				}
 			}
