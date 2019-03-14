@@ -14,22 +14,14 @@ pipeline {
 		stage('Stop Tomcat') {
 			steps {
 				sshagent(['jpravinp']) {
-					sh  'ssh -o StrictHostKeyChecking=no jpravinp@${ipAddress} /Users/jpravinp/Desktop/tomcat/bin/shutdown.sh'
+					def result = sh  'ssh -o StrictHostKeyChecking=no jpravinp@${ipAddress} /Users/jpravinp/Desktop/tomcat/bin/shutdown.sh'
+					if(result != 0) {
+						sh "exit ${result}" 
+					}
 				}
 			}
 		}
-		post {
-				success{
-					script{
-						sh 'echo "Success"'	
-					}
-				}
-				failure{
-					script{
-						sh 'exit 1'	
-					}
-				}
-			}
+		
 		stage('Copy jar to webapps') {
 			steps {
 				sshagent(['jpravinp']) {
